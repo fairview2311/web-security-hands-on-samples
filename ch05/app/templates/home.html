@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block content %}
+<h1>社内のメモを共有しましょう</h1><p>自分のメモと公開メモを表示しています。</p>
+{% for note in notes %}<article><a href="/notes/{{ note.id }}">{{ note.title }}</a><p>{{ note.body }}</p><form action="/summarize" method="post"><input type="hidden" name="note_id" value="{{ note.id }}"><button>AI で要約する</button></form></article>{% endfor %}
+<section><h2>プロフィール</h2><p>API 操作の PUT /me で表示名・自己紹介を更新できます。</p><a href="/admin">管理画面</a></section>
+<section><h2>便利な道具</h2><form action="/ping"><label>接続先 <input name="host" value="127.0.0.1"></label><button>ping</button></form>
+<form action="/download"><label>ファイル名 <input name="name" value="manual.txt"></label><button>ダウンロード</button></form>
+<form action="/upload" method="post" enctype="multipart/form-data"><label>共有ファイル <input type="file" name="file" required></label><button>アップロード</button></form>
+<form action="/preview"><label>プレビュー URL <input name="url" type="url" value="http://internal-admin:9000"></label><button>プレビュー</button></form>
+<form action="/coupon" method="post"><label>クーポン <input name="code" value="MIDORI100"></label><button>使う</button></form>
+<p><a href="/token">JWT を発行</a> · <a href="/debug">デバッグ情報</a></p></section>
+{% endblock %}

@@ -1,0 +1,10 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>アンケート</title>
+<p>結果を読み込んでいます...</p>
+<pre id="out"></pre>
+<script>
+fetch("http://localhost:8000/me", { credentials: "include" })
+  .then(r => r.json())
+  .then(data => { document.getElementById("out").textContent = JSON.stringify(data); });
+</script>

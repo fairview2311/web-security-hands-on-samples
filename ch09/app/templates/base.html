@@ -1,0 +1,7 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>みどりメモ</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#f4f8f4;color:#23382c;margin:0;line-height:1.7}header{background:#256144;color:white;padding:1rem 5%}header a{color:white}main{max-width:960px;margin:2rem auto;padding:0 1rem}a{color:#17683d}nav{display:flex;gap:1rem;flex-wrap:wrap}article,section{background:white;border:1px solid #dce7df;border-radius:8px;padding:1rem;margin:1rem 0}input,textarea,button{font:inherit;padding:.4rem;margin:.3rem 0}textarea{width:95%;min-height:7rem}button{background:#256144;color:white;border:0;border-radius:4px;cursor:pointer}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#edf2ee;padding:1rem}label{display:block}.notice{background:#fff4d5;padding:.6rem}.error{color:#a42222}footer{font-size:.85rem;margin-top:2rem}
+</style></head><body><header><strong>みどりメモ</strong><nav><a href="/">ホーム</a><a href="/board">掲示板</a><a href="/search">検索</a><a href="/map">地図</a><a href="/docs">API 操作</a>{% if user %}<span>{{ user.display_name }} / {{ user.points }} ポイント</span><form action="/logout" method="post"><button>ログアウト</button></form>{% else %}<a href="/login">ログイン</a>{% endif %}</nav></header>
+<main><p class="notice">脆弱性の学習用です。自分のパソコンの Docker 内で使ってください。起動すると演習データが初期状態に戻ります。</p>{% block content %}{% endblock %}
+<footer>のぞき窓：ブラウザーの開発者ツールでレスポンスの x-peek を URL デコードすると、SQL・コマンド・返した HTML を確認できます。</footer></main></body></html>

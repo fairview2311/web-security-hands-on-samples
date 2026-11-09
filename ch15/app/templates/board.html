@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block content %}<h1>掲示板</h1>{% if user %}<form action="/board" method="post"><input type="hidden" name="csrf" value="{{ csrf_token }}"><label>件名 <input name="title" value="共有メモ"></label><label>本文 <textarea name="body" required></textarea></label><button>投稿する</button></form>{% else %}<p><a href="/login">ログインすると投稿できます。</a></p>{% endif %}
+{% for note in notes %}<article><h2>{{ note.title }}</h2><p>{{ note.display_name }}</p><div>{{ note.body }}</div></article>{% endfor %}{% endblock %}

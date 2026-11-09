@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<h1>ログイン</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<form method="post" action="/login"><label>ユーザー名 <input name="username" value="yamada-taro" required></label><label>パスワード <input type="password" name="password" required></label><button>ログイン</button></form>
+<p>演習用ユーザー：yamada-taro（山田 太郎）、sato-hanako（佐藤 花子）、admin（管理者）</p>{% endblock %}

@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block content %}<h1>メモ検索</h1><form action="/search"><input name="q" value="{{ q }}"><button>検索</button></form>
+{% if error %}<pre class="error">{{ error }}</pre>{% endif %}
+{% for note in notes %}<article><a href="/notes/{{ note.id }}">{{ note.title }}</a><pre>{{ note.body }}</pre></article>{% endfor %}
+<details open><summary>のぞき窓：組み立てた SQL</summary><pre>{{ sql }}</pre></details>{% endblock %}

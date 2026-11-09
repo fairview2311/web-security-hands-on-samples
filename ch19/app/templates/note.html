@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<article><h1>{{ note.title }}</h1><p>メモ番号 {{ note.id }} / 所有者番号 {{ note.owner_id }}</p><pre>{{ note.body }}</pre><form action="/summarize" method="post"><input type="hidden" name="note_id" value="{{ note.id }}"><button>AI で要約する</button></form></article>{% endblock %}

@@ -1,0 +1,45 @@
+# みどりメモ — 脆弱性の演習用アプリ（わざと脆弱に作ってあります。インターネットに公開するサーバーや本番の環境に置かないでください）
+services:
+  app:
+    build: ./app
+    volumes:
+      - .:/workspace
+      - data:/data
+    working_dir: /workspace
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --reload-dir app
+    environment:
+      WATCHFILES_FORCE_POLLING: "true"
+      OLLAMA_MODEL: "llama3.2:1b"
+    ports:
+      - "127.0.0.1:8000:8000"   # 自分のパソコンの中からだけ開ける
+
+  attacker:
+    build: ./attacker
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    command: sleep infinity
+
+  trap:
+    image: python:3.13-slim
+    volumes:
+      - ./trap:/trap
+    command: python /trap/server.py
+    ports:
+      - "127.0.0.1:4000:4000"
+
+  internal-admin:
+    image: python:3.13-slim
+    volumes:
+      - ./internal-admin:/srv
+    command: python /srv/server.py
+
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ai"]
+    volumes:
+      - ollama:/root/.ollama
+
+volumes:
+  ollama:
+  data:

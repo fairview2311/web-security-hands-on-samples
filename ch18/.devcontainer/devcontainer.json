@@ -1,0 +1,7 @@
+{
+  "name": "midori-memo",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "customizations": { "vscode": { "extensions": ["ms-python.python"] } }
+}

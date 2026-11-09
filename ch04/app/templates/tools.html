@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h1>接続確認</h1><form action="/ping"><input name="host" value="{{ host }}"><button>ping</button></form><pre>{{ output }}</pre><details open><summary>のぞき窓：実行したコマンド</summary><pre>{{ command }}</pre></details>{% endblock %}
